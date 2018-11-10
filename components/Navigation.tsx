@@ -20,6 +20,7 @@ const Navi = styled.nav`
   position: absolute;
   background-color: red;
   height: 100vh;
+  top: 0px;
 `;
 
 const A = styled.a``;

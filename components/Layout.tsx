@@ -25,9 +25,7 @@ const Layout: React.SFC<Props> = ({
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <Navigation navigationStructure={naviTree} />
-    </header>
+    <Navigation navigationStructure={naviTree} />
     {children}
     <footer>I'm here to stay</footer>
   </Body>

@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Navi = styled.nav`
-  right: ${({ position }: any) => position};
+  right: ${({ prop }: any) => prop};
   transition: all 0.3s ease-in-out;
   width: 300px;
   position: absolute;
@@ -47,7 +47,7 @@ class Navigation extends React.Component<Props, State> {
     return (
       <Container>
         <button onClick={event => this.toggleNavigation(event)}>Menu</button>
-        <Navi position={position}>
+        <Navi prop={position}>
           {navigationStructure.map((item: NavigationStructure) => (
             <Link href={item.href}>
               <A>{item.label}</A>

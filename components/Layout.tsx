@@ -1,13 +1,13 @@
-import * as React from "react";
-import Head from "next/head";
-import Navigation from "./Navigation";
-import styled from "styled-components";
+import * as React from 'react';
+import Head from 'next/head';
+import Navigation from './Navigation';
+import styled from 'styled-components';
 
 type Props = {
   title?: string;
 };
 
-const naviTree = [{ href: "/about.html", label: "About" }];
+const naviTree = [{ href: '/about.html', label: 'About' }];
 
 const Body = styled.div`
   width: 100%;
@@ -17,7 +17,7 @@ const Body = styled.div`
 
 const Layout: React.SFC<Props> = ({
   children,
-  title = "This is the default title"
+  title = 'This is the default title'
 }) => (
   <Body>
     <Head>

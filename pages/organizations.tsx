@@ -1,13 +1,12 @@
-import * as React from 'react';
-
+import * as React from "react";
 
 class OrganizationPage extends React.Component {
-  state = { data: {} }
+  state = { data: {} };
   getInitialProps() {
     // Fetch data;
   }
 
   render() {
-    return <div></div>
+    return <div />;
   }
 }

@@ -32,12 +32,12 @@ interface State {
   position: string;
 }
 class Navigation extends React.Component<Props, State> {
-  state = { open: false, position: "-300px" };
+  state = { open: false, position: '-300px' };
   toggleNavigation = (event: React.SyntheticEvent) => {
     event.preventDefault();
     this.setState((state: State) => ({
       open: !state.open,
-      position: state.open ? "0px" : "-300px"
+      position: state.open ? '0px' : '-300px'
     }));
   };
 

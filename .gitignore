@@ -1,4 +1,8 @@
 node_modules/
 .next/
+<<<<<<< HEAD
 
 .env
+=======
+.idea/
+>>>>>>> master

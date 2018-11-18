@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import {colors} from '../styles/stylesheet';
 
 interface NavigationStructure {
   href: string;
@@ -15,10 +16,11 @@ const Container = styled.div`
 
 const Navi = styled.nav`
   right: ${({ prop }: any) => prop};
+  top: 0;
   transition: all 0.3s ease-in-out;
   width: 300px;
-  position: absolute;
-  background-color: red;
+  position: fixed;
+  background-color: ${colors.red};
   height: 100vh;
   top: 0px;
 `;
@@ -38,7 +40,7 @@ class Navigation extends React.Component<Props, State> {
     event.preventDefault();
     this.setState((state: State) => ({
       open: !state.open,
-      position: state.open ? '0px' : '-300px'
+      position: !state.open ? '0px' : '-300px'
     }));
   };
 

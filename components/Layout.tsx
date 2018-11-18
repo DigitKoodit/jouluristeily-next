@@ -7,7 +7,11 @@ type Props = {
   title?: string;
 };
 
-const naviTree = [{ href: '/about.html', label: 'About' }];
+const naviTree = [
+    { href: '/about', label: 'About' },
+    {href: '/index', label: 'Home'},
+    {href: '/organizations', label: 'Organizations'},
+];
 
 const Body = styled.div`
   width: 100%;

@@ -8,5 +8,6 @@ const client = contentful.createClient({
 export const fetchEventData = id => {
   return client
     .getEntries(id)
+    .then(data => console.log('data', data))
     .catch(err => console.error('API-call went wrong', err)); // tslint:disable-line
 };

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import {colors} from '../styles/stylesheet';
+import { colors, fonts, shadows } from '../styles/stylesheet';
+import Header from './Header';
 
 interface NavigationStructure {
   href: string;
@@ -12,17 +13,28 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   overflow-x: hidden;
+  font-family: ${fonts.title};
 `;
 
 const Navi = styled.nav`
-  right: ${({ prop }: any) => prop};
+  right: -200px;
   top: 0;
   transition: all 0.3s ease-in-out;
-  width: 300px;
+  width: 200px;
   position: fixed;
-  background-color: ${colors.red};
+  background-color: ${colors.white};
   height: 100vh;
   top: 0px;
+  padding: 20px;
+  box-sizing: border-box;
+  ${({ prop }: any) => {
+    return prop
+      ? `
+      right: 0px;
+      box-shadow: ${shadows.tall}
+      `
+      : '';
+  }};
 `;
 
 const A = styled.a``;
@@ -32,32 +44,38 @@ interface Props {
 }
 interface State {
   open: boolean;
-  position: string;
 }
 class Navigation extends React.Component<Props, State> {
-  state = { open: false, position: '-300px' };
+  state = { open: false };
   toggleNavigation = (event: React.SyntheticEvent) => {
     event.preventDefault();
     this.setState((state: State) => ({
-      open: !state.open,
-      position: !state.open ? '0px' : '-300px'
+      open: !state.open
     }));
   };
 
   render() {
     const { navigationStructure } = this.props;
-    const { position } = this.state;
+    const { open } = this.state;
     return (
       <Container>
-        <button onClick={event => this.toggleNavigation(event)}>Menu</button>
-        <Navi prop={position}>
-          {navigationStructure.map((item: NavigationStructure) => (
-            <Link href={item.href}>
-              <A>{item.label}</A>
-            </Link>
-          ))}
+        <Header>
+          <button onClick={event => this.toggleNavigation(event)}>Menu</button>
+        </Header>
+        <Navi prop={open}>
+          <ul>{navigationStructure.map(this.renderLink)}</ul>
         </Navi>
       </Container>
+    );
+  }
+
+  renderLink(item: any) {
+    return (
+      <li>
+        <Link href={item.href}>
+          <A>{item.label}</A>
+        </Link>
+      </li>
     );
   }
 }

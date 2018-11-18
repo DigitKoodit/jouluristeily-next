@@ -10,3 +10,8 @@ declare namespace process {
     CONTENTFUL_TOKEN: string;
   }
 }
+
+type HttpRequestStatus = 'PENDING' | 'FULFILLED' | 'REJECTED' | '';
+declare namespace JR {
+
+}

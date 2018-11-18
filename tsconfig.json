@@ -14,6 +14,7 @@
     "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "rootDir": "."
   }
 }

@@ -7,32 +7,35 @@ type Props = {
   title?: string;
 };
 
-const naviTree = [
-    { href: '/about', label: 'About' },
-    {href: '/index', label: 'Home'},
-    {href: '/organizations', label: 'Organizations'},
-];
-
-const Body = styled.div`
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+const Content = styled.section`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 `;
+
+const naviTree = [
+  { href: '/about', label: 'About' },
+  { href: '/index', label: 'Home' },
+  { href: '/organizations', label: 'Organizations' },
+  { href: '/events', label: 'Events' }
+];
 
 const Layout: React.SFC<Props> = ({
   children,
   title = 'This is the default title'
 }) => (
-  <Body>
+  <React.Fragment>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <Navigation navigationStructure={naviTree} />
-    {children}
-    <footer>I'm here to stay</footer>
-  </Body>
+    <Content>
+      <Navigation navigationStructure={naviTree} />
+      {children}
+      <footer>I'm here to stay</footer>
+    </Content>
+  </React.Fragment>
 );
 
 export default Layout;

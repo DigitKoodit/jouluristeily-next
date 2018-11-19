@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../styles/stylesheet';
 
 const Header = styled.header`
-  background-color: ${colors.lightred}
+  background-color: ${colors.lightred};
   padding: 10px;
   width: 100%;
 `;

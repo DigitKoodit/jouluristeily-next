@@ -1,21 +1,18 @@
 import * as React from 'react';
 import Layout from '../components/Layout';
-import styled from 'styled-components';
+import { Page } from '../components/Styled/Common';
 
 interface State {
   requestStatus: HttpRequestStatus;
 }
 
-const Page = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-`;
-
 class Events extends React.Component<null, State> {
-  state = {
-    requestStatus: ''
-  };
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      requestStatus: ''
+    };
+  }
   static getInitialProps() {
     console.log('Fetching data');
     return {};

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Head from 'next/head';
 import Navigation from './Navigation';
 import styled from 'styled-components';
+import Footer from './Footer';
 
 type Props = {
   title?: string;
@@ -13,11 +14,21 @@ const Content = styled.section`
   flex-direction: column;
 `;
 
-const naviTree = [
-  { href: '/about', label: 'About' },
-  { href: '/index', label: 'Home' },
-  { href: '/organizations', label: 'Organizations' },
-  { href: '/events', label: 'Events' }
+export interface NaviItem {
+  href: string;
+  label: string;
+  divider?: boolean;
+}
+
+const naviTree: NaviItem[] = [
+  { href: '/index', label: 'JR 2018' },
+  { href: '/about', label: 'Laiva' },
+  { href: '/events', label: 'Ohjelma' },
+  { href: '/tuplis', label: 'Tuplis', divider: true },
+  { href: '/guide', label: 'Ohjeet' },
+  { href: '/terms', label: 'Matkaehdot', divider: true },
+  { href: '/loimu', label: 'Loimu' },
+  { href: '/afterlecture', label: 'After Lecture' },
 ];
 
 const Layout: React.SFC<Props> = ({
@@ -33,7 +44,7 @@ const Layout: React.SFC<Props> = ({
     <Content>
       <Navigation navigationStructure={naviTree} />
       {children}
-      <footer>I'm here to stay</footer>
+      <Footer>I'm here to stay</Footer>
     </Content>
   </React.Fragment>
 );

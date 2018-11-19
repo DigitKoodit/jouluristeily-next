@@ -1,27 +1,11 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import styled, { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet } from 'styled-components';
+import { Html, Body } from '../components/Styled/Common';
 
 interface props {
   styleTags: any;
 }
-
-const Html = styled.html`
-  box-sizing: border-box;
-  padding: 0px;
-  margin: 0px;
-`;
-
-const Body = styled.body`
-  box-sizing: border-box;
-  padding: 0px;
-  margin: 0px;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-`;
 
 // Document component is strongly typed with `@types/next`
 export default class MyDocument extends Document<props> {
@@ -37,10 +21,10 @@ export default class MyDocument extends Document<props> {
     return (
       <Html lang="en">
         <Head>
-          <style>
-            @import
-            url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Passion+One:700|Patua+One');
-          </style>
+          <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Passion+One:700|Patua+One"
+            rel="stylesheet"
+          />
           {this.props.styleTags}
         </Head>
         <Body>

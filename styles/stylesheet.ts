@@ -9,7 +9,7 @@ export const colors = {
 
 export const fonts = {
   title: 'Passion One',
-  secondarytitle: 'Patua One',
+  secondary: 'Patua One',
   paragraph: 'Open Sans'
 };
 

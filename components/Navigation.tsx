@@ -49,14 +49,12 @@ const Navi = styled.nav`
   & li {
     list-style: none;
     padding: 10px;
-
   }
 `;
 
 const ListItem = styled.li`
-${({ prop }: any) => (
-  prop ? 'border-bottom: 1px solid rgba(0, 0, 0, 0.1);' : ''
-)}
+  ${({ prop }: any) =>
+    prop ? 'border-bottom: 1px solid rgba(0, 0, 0, 0.1);' : ''}
 `;
 
 const A = styled.a`

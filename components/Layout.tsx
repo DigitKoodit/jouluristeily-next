@@ -28,7 +28,7 @@ const naviTree: NaviItem[] = [
   { href: '/guide', label: 'Ohjeet' },
   { href: '/terms', label: 'Matkaehdot', divider: true },
   { href: '/loimu', label: 'Loimu' },
-  { href: '/afterlecture', label: 'After Lecture' },
+  { href: '/afterlecture', label: 'After Lecture' }
 ];
 
 const Layout: React.SFC<Props> = ({

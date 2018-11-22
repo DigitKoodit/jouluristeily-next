@@ -1,13 +1,10 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
+import { Page } from '../components/Styled/Common';
 
 export default () => (
   <Layout title="About | Next.js + TypeScript Example">
-    <p>This is the about page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
+    <Page>
+      <p>This is the about page</p>
+    </Page>
   </Layout>
 );

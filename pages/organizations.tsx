@@ -1,12 +1,15 @@
 import * as React from 'react';
+import Layout from '../components/Layout';
 
-class OrganizationPage extends React.Component {
+class Organizations extends React.Component {
   state = { data: {} };
   getInitialProps() {
     // Fetch data;
   }
 
   render() {
-    return <div />;
+    return <Layout />;
   }
 }
+
+export default Organizations;

@@ -1,42 +1,73 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-typescript)
+# Jouluristeily - Next
 
-# TypeScript Next.js example
+Freshest iteration of the Jouluristeily application. This time built with next. The idea is for this version to replace both the website and the applications.
 
-This is a really simple project that show the usage of Next.js with TypeScript.
+The application is built using `Next.js` and used `Contentful` as it's CMS.
 
-## How to use it?
+## Features
 
-### Using `create-next-app`
+- Dynamic data fetching from contentful
+- Server rendering through next.js
+- Typescript
+- Styled components for styling
 
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+## Contentful data models
 
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
+Contentful data models have a bit of depth to them, so I felt it likely to be of use to provide samples here.
+
+
+### Event elementti Contentfulissa
+```javascript
+  {
+    sys: {
+      space: { sys: { type: 'Link', linkType: 'Space', id: 'xxxxxx' } },
+      id: 'xxxxx',
+      type: 'Entry',
+      createdAt: '2018-11-22T18:10:16.725Z',
+      updatedAt: '2018-11-22T18:10:16.725Z',
+      environment: {
+        sys: { id: 'master', type: 'Link', linkType: 'Environment' }
+      },
+      revision: 1,
+      contentType: {
+        sys: { type: 'Link', linkType: 'ContentType', id: 'event' }
+      },
+      locale: 'en-US'
+    },
+    fields: {
+      title: 'Trubaduuri Dibba Dirlandaa',
+      description: 'Trubaduuri Dibba Dirlandaa viihdyttää Pubissa (Kansi 7)',
+      startTime: '2018-11-29T20:00+02:00',
+      endTime: '2018-11-29T21:45+02:00',
+      location: 'Pubi',
+      deck: 7
+    }
+  }
 ```
 
-### Download manually
+### Page elementti Contenfulissa
+```javascript
+  {
+    sys: {
+      space: { sys: { type: 'Link', linkType: 'Space', id: 'xxxxx' } },
+      id: 'xxxxx',
+      type: 'Entry',
+      createdAt: '2018-11-10T13:29:35.764Z',
+      updatedAt: '2018-11-18T16:04:03.827Z',
+      environment: {
+        sys: { id: 'master', type: 'Link', linkType: 'Environment' }
+      },
+      revision: 2,
+      contentType: {
+        sys: { type: 'Link', linkType: 'ContentType', id: 'page' }
+      },
+      locale: 'en-US'
+    },
+    fields: {
+      title: 'Etusivu',
+      text: 'Content of page in markdown format' // This is where the description would be.
+      id: 'id_home'
+    }
+  }
 
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-typescript
-cd with-typescript
 ```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-## The idea behind the example
-
-Use the [@zeit/next-typescript](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript) plugin to inject [@babel/preset-typescript](https://github.com/babel/babel/tree/master/packages/babel-preset-typescript) into Next.js, allowing for fast TypeScript transpilation. It also implements a `tsconfig.json` as recommended by [the @zeit/next-typescript plugin page](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript/#readme).
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this in your `test` scripts, say, for your CI process.

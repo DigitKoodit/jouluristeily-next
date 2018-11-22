@@ -1,13 +1,25 @@
-import contentful from 'contentful';
+import * as contentful from 'contentful';
 
-const client = contentful.createClient({
-  space: process.env.CONTENTUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_TOKEN
-});
+interface ApiConfig {
+  space: string;
+  accessToken: string;
+}
 
-export const fetchEventData = id => {
-  return client
-    .getEntries(id)
-    .then(data => console.log('data', data))
-    .catch(err => console.error('API-call went wrong', err)); // tslint:disable-line
-};
+export function createApiClient(config: ApiConfig) {
+  const client = contentful.createClient(config);
+  return {
+    fetchContentTypes: () => {
+      return client
+        .getContentTypes()
+        .then(response => response.items)
+        .catch(error => console.log('err', error));
+    },
+
+    fetchEventData: id => {
+      return client
+        .getEntries({ content_type: id })
+        .then(response => response.items)
+        .catch(err => console.error('API-call went wrong', err)); // tslint:disable-line
+    }
+  };
+}

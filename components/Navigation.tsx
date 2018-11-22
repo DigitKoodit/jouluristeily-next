@@ -13,7 +13,6 @@ interface NavigationStructure {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  overflow-x: hidden;
   font-family: ${fonts.secondary};
   font-weight: 400;
 `;

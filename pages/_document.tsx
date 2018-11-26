@@ -3,11 +3,6 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { Html, Body } from '../components/Styled/Common';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAngry } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faAngry);
-
 interface props {
   styleTags: any;
 }
@@ -27,7 +22,7 @@ export default class MyDocument extends Document<props> {
       <Html lang="en">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Passion+One:700|Patua+One"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Passion+One:400,600|Patua+One"
             rel="stylesheet"
           />
           {this.props.styleTags}

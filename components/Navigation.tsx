@@ -15,7 +15,7 @@ interface NavigationStructure {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  font-family: ${fonts.secondary};
+  font-family: ${fonts.title};
   font-weight: 400;
   display: flex;
   align-items: center;

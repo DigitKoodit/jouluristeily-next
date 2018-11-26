@@ -6,7 +6,7 @@ const Markdown = styled.div`
   padding: 10px;
   overflow: scroll;
   & > h1 {
-    font-family: ${fonts.secondary};
+    font-family: ${fonts.title};
     color: ${colors.red}
   }
 

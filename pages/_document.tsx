@@ -10,7 +10,6 @@ interface props {
 // Document component is strongly typed with `@types/next`
 export default class MyDocument extends Document<props> {
   static getInitialProps({ renderPage }: any) {
-    console.log('Document rendering');
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)

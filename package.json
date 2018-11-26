@@ -5,8 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "prettify": "prettier --write \"./**/*.{ts,tsx}\"",
-    "lint": "npm run prettify && tslint --fix \"src/**/*.{ts,tsx}\"",
+    "prettify": "prettier --write \"./{pages,components}/**/*.{ts,tsx}\"",
+    "lint": "npm run prettify && tslint --fix \"./{pages,components}/**/*.{ts,tsx}\"",
     "type-check": "tsc"
   },
   "dependencies": {

@@ -1,41 +1,30 @@
 import * as React from 'react';
-import Layout from '../components/Layout';
-import { Page } from '../components/Styled/Common';
 import { createApiClient } from '../core/api';
 import { ContentType } from 'contentful';
 import { format } from 'date-fns';
-
-interface State {
-  requestStatus: HttpRequestStatus;
-}
+import PageLoader from '../components/PageLoader';
 
 interface Props {
   page?: any;
   events: CruiseEvent[];
 }
 
-class Events extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      requestStatus: ''
-    };
-  }
-  static getInitialProps() {
-    const api = createApiClient({
-      space: process.env.CONTENTFUL_SPACE_ID,
-      accessToken: process.env.CONTENTFUL_TOKEN
-    });
+const fetchProps = async () => {
+  const api = createApiClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_TOKEN
+  });
 
-    return api.fetchEventData('event').then((data: any[]) => ({
-      events: data.map((item: ContentType) => ({
-        ...item.fields,
-        id: item.sys.id
-      }))
-    }));
-  }
+  return api.fetchEventData('event').then((data: any[]) => ({
+    events: data.map((item: ContentType) => ({
+      ...item.fields,
+      id: item.sys.id
+    }))
+  }));
+};
 
-  renderEvent(event: CruiseEvent) {
+const Events: React.SFC<Props> = (props: Props) => {
+  const renderEvent = (event: CruiseEvent) => {
     const { title, startTime, endTime, location, deck, id } = event;
     return (
       <div key={id}>
@@ -49,23 +38,19 @@ class Events extends React.Component<Props, State> {
         </h4>
       </div>
     );
-  }
+  };
 
-  render() {
-    const { events } = this.props;
-    const sortedEvents = events.sort(ev => new Date(ev.startTime).getTime());
-    return (
-      <Layout>
-        <Page>
-          <h1>Event page</h1>
-          {sortedEvents && sortedEvents.map(this.renderEvent)}
-        </Page>
-      </Layout>
-    );
-  }
-}
+  const { events } = props;
+  const sortedEvents = events && events.sort(ev => new Date(ev.startTime).getTime());
+  return (
+    <React.Fragment>
+      <h1>Event page</h1>
+      {sortedEvents && sortedEvents.map(renderEvent)}
+    </React.Fragment>
+  );
+};
 
-export default Events;
+export default PageLoader(Events, fetchProps);
 
 const a = [
   {

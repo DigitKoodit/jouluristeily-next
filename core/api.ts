@@ -12,7 +12,7 @@ export function createApiClient(config: ApiConfig) {
       return client
         .getContentTypes()
         .then(response => response.items)
-        .catch(error => console.log('err', error));
+        .catch(error => console.error('err', error)); // tslint:disable-line
     },
 
     fetchEventData: id => {

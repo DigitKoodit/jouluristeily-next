@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { colors, fonts, shadows } from '../styles/stylesheet';
 import Header from './Header';
 import { NaviItem } from './Layout';
+import { Image } from './Styled/Common';
+import MenuIcon from './Styled/MenuIcon';
 
 interface NavigationStructure {
   href: string;
@@ -15,14 +17,18 @@ const Container = styled.div`
   width: 100%;
   font-family: ${fonts.secondary};
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Navi = styled.nav`
-  right: -200px;
+  right: -300px;
   top: 0;
   transition: all 0.2s ease-in-out;
-  width: 200px;
+  width: 300px;
   position: fixed;
+  z-index: 1;
   background-color: ${colors.white};
   height: 100vh;
   top: 0px;
@@ -69,6 +75,17 @@ const NaviHead = styled.div`
   padding-bottom: 10px;
 `;
 
+const MenuHolder = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0px;
+  right: 15px;
+  top: 13px;
+  position: fixed;
+`;
+
 interface Props {
   navigationStructure?: NavigationStructure[];
 }
@@ -91,7 +108,8 @@ class Navigation extends React.Component<Props, State> {
     return (
       <Container>
         <Header>
-          <button onClick={event => this.toggleNavigation(event)}>Menu</button>
+          <MenuHolder><MenuIcon onClick={ev => this.toggleNavigation(ev)}/></MenuHolder>
+        <Image src="static/logo.svg" alt="logo" />
         </Header>
         <Navi prop={open}>
           <NaviHead>

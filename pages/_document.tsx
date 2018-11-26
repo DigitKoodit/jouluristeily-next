@@ -3,6 +3,11 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { Html, Body } from '../components/Styled/Common';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faAngry } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faAngry);
+
 interface props {
   styleTags: any;
 }

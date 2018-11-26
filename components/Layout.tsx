@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navigation from './Navigation';
 import styled from 'styled-components';
 import Footer from './Footer';
+import { colors } from '../styles/stylesheet';
 
 type Props = {
   title?: string;
@@ -12,6 +13,9 @@ const Content = styled.section`
   display: flex;
   flex: 1;
   flex-direction: column;
+  align-items: center;
+  justify-contents: center;
+  background-color: ${colors.white};
 `;
 
 export interface NaviItem {
@@ -33,11 +37,10 @@ const naviTree: NaviItem[] = [
 
 const Layout: React.SFC<Props> = ({
   children,
-  title = 'This is the default title'
 }) => (
   <React.Fragment>
     <Head>
-      <title>{title}</title>
+      <title>Jouluristeily 2018</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>

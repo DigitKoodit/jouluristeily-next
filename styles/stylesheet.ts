@@ -8,9 +8,9 @@ export const colors = {
 };
 
 export const fonts = {
-  title: 'Passion One',
-  secondary: 'Patua One',
-  paragraph: 'Open Sans'
+  title: 'Passion One, Sans-Serif',
+  secondary: 'Patua One, Sans-Serif',
+  paragraph: 'Open Sans, Sans-Serif'
 };
 
 export const shadows = {

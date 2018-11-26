@@ -6,6 +6,13 @@ export const Html = styled.html`
   padding: 0px;
   margin: 0px;
   font-family: ${fonts.paragraph};
+  & * {
+    box-sizing: border-box;
+  }
+`;
+
+export const Image = styled.img`
+  width: 250px;
 `;
 
 export const Body = styled.body`
@@ -14,7 +21,7 @@ export const Body = styled.body`
   margin: 0px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 
@@ -34,4 +41,7 @@ export const Page = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
+  max-width: 600px;
+  align-items: center;
+  justify-content: flex-start;
 `;

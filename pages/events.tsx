@@ -11,6 +11,10 @@ interface Props {
   events: CruiseEvent[];
 }
 
+interface State {
+  open: number | null;
+}
+
 const EventContainer = styled.div`
   padding: 10px 10px;
   max-height: 60vh;
@@ -28,20 +32,40 @@ const fetchProps = async () =>
       }))
     }));
 
-const Events: React.SFC<Props> = (props: Props) => {
-  const { events } = props;
-  const sortedEvents =
-    events && events.sort((a, b) => compareAsc(a.startTime, b.startTime));
-  return (
-    <React.Fragment>
-      <EventContainer>
-        {sortedEvents &&
-          sortedEvents.map(event => (
-            <Event key={`${event.title}-${event.startTime}`} event={event} />
-          ))}
-      </EventContainer>
-    </React.Fragment>
-  );
-};
+class Events extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { open: null };
+  }
+  setOpen(index: number) {
+    this.setState(state => {
+      if (state.open === index) {
+        return { open: null };
+      }
+      return { open: index };
+    });
+  }
+  render() {
+    const { events } = this.props;
+    const { open } = this.state;
+    const sortedEvents =
+      events && events.sort((a, b) => compareAsc(a.startTime, b.startTime));
+    return (
+      <React.Fragment>
+        <EventContainer>
+          {sortedEvents &&
+            sortedEvents.map((event: CruiseEvent, idx: number) => (
+              <Event
+                onClick={() => this.setOpen(idx)}
+                open={idx === open}
+                key={`${event.title}-${event.startTime}`}
+                event={event}
+              />
+            ))}
+        </EventContainer>
+      </React.Fragment>
+    );
+  }
+}
 
 export default propLoader(Events, fetchProps);

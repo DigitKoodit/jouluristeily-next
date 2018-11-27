@@ -20,7 +20,7 @@ interface Props {
   content: string;
 }
 
-export default ({ content }: Props) => (
+export default ({ content = '### ...' }: Props) => (
   <Markdown
     dangerouslySetInnerHTML={{ __html: marked(content, { sanitize: true }) }}
   />

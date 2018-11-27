@@ -47,7 +47,7 @@ const Layout: React.SFC<Props> = ({ children }) => (
     <Content>
       <Navigation navigationStructure={naviTree} />
       {children}
-      <Footer>Footer content here</Footer>
+      <Footer />
     </Content>
   </React.Fragment>
 );

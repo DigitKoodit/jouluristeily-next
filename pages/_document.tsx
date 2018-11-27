@@ -10,7 +10,6 @@ interface props {
 // Document component is strongly typed with `@types/next`
 export default class MyDocument extends Document<props> {
   static getInitialProps({ renderPage }: any) {
-    console.log('Document rendering');
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)
@@ -22,8 +21,9 @@ export default class MyDocument extends Document<props> {
     return (
       <Html lang="en">
         <Head>
+          <link rel="shortcut icon" href="static/favicon.ico" />
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Passion+One:700|Patua+One"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Passion+One:400,600|Patua+One"
             rel="stylesheet"
           />
           {this.props.styleTags}

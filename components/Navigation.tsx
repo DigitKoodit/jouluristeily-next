@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { colors, fonts, shadows } from '../styles/stylesheet';
 import Header from './Header';
 import { NaviItem } from './Layout';
+import { Image } from './Styled/Common';
+import MenuIcon from './Styled/MenuIcon';
 
 interface NavigationStructure {
   href: string;
@@ -13,16 +15,20 @@ interface NavigationStructure {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  font-family: ${fonts.secondary};
+  font-family: ${fonts.title};
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Navi = styled.nav`
-  right: -200px;
+  right: -300px;
   top: 0;
   transition: all 0.2s ease-in-out;
-  width: 200px;
+  width: 300px;
   position: fixed;
+  z-index: 1;
   background-color: ${colors.white};
   height: 100vh;
   top: 0px;
@@ -31,8 +37,18 @@ const Navi = styled.nav`
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  border-left: 5px solid ${colors.red};
+  &:after {
+    z-index: 2;
+    position: absolute;
+    content: '';
+    left: -5px;
+    bottom: 0px;
+    top: 0px;
+    border-left: 5px ${colors.yellow} dashed;
+  }
   ${({ prop }: any) => {
     return prop
       ? `
@@ -48,12 +64,13 @@ const Navi = styled.nav`
   & li {
     list-style: none;
     padding: 10px;
+    font-size: 1.3rem;
   }
 `;
 
 const ListItem = styled.li`
-  ${({ prop }: any) =>
-    prop ? 'border-bottom: 1px solid rgba(0, 0, 0, 0.1);' : ''}
+  border-bottom: 2px solid;
+  border-color: ${(args: any) => args.prop || 'transparent'};
 `;
 
 const A = styled.a`
@@ -67,6 +84,30 @@ const NaviHead = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: 10px;
+`;
+
+const MenuHolder = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 15px;
+  padding-right: 15px;
+  right: auto;
+  left: auto;
+  position: fixed;
+  max-width: 600px;
+  width: 100%;
+`;
+
+const Logo = styled(Image)`
+  margin-top: 50px;
+  margin-bottom: -20px;
+`;
+
+const Icon = styled(Image)`
+  width: 100px;
+  margin: 20px;
 `;
 
 interface Props {
@@ -91,12 +132,14 @@ class Navigation extends React.Component<Props, State> {
     return (
       <Container>
         <Header>
-          <button onClick={event => this.toggleNavigation(event)}>Menu</button>
+          <MenuHolder>
+            <MenuIcon onClick={ev => this.toggleNavigation(ev)} />
+          </MenuHolder>
+          <Logo src="static/logo.svg" alt="logo" />
         </Header>
         <Navi prop={open}>
           <NaviHead>
-            <img src="https://placehold.it/100x50" />
-            <button onClick={ev => this.toggleNavigation(ev)}>Sulje</button>
+            <Icon src="static/icon.svg" alt="icon" />
           </NaviHead>
           <ul>{navigationStructure.map(this.renderLink)}</ul>
         </Navi>

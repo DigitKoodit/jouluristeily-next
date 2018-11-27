@@ -21,33 +21,33 @@ const Content = styled.section`
 export interface NaviItem {
   href: string;
   label: string;
-  divider?: boolean;
+  divider?: string;
 }
 
 const naviTree: NaviItem[] = [
   { href: '/index', label: 'JR 2018' },
-  { href: '/about', label: 'Laiva' },
+  { href: '/vessel', label: 'Laiva' },
   { href: '/events', label: 'Ohjelma' },
-  { href: '/tuplis', label: 'Tuplis', divider: true },
+  { href: '/notepad', label: 'Hyttimuistio' },
+  { href: '/namegenerator', label: 'Risteilynimeni', divider: colors.lightred },
   { href: '/guide', label: 'Ohjeet' },
-  { href: '/terms', label: 'Matkaehdot', divider: true },
+  { href: '/terms', label: 'Matkaehdot', divider: colors.lightred },
   { href: '/loimu', label: 'Loimu' },
   { href: '/afterlecture', label: 'After Lecture' }
 ];
 
-const Layout: React.SFC<Props> = ({
-  children,
-}) => (
+const Layout: React.SFC<Props> = ({ children }) => (
   <React.Fragment>
     <Head>
       <title>Jouluristeily 2018</title>
+      <link rel="shortcut icon" href="static/icon.svg" />
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Content>
       <Navigation navigationStructure={naviTree} />
       {children}
-      <Footer>I'm here to stay</Footer>
+      <Footer>Footer content here</Footer>
     </Content>
   </React.Fragment>
 );

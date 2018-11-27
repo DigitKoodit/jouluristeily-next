@@ -37,8 +37,18 @@ const Navi = styled.nav`
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  border-left: 5px solid ${colors.red};
+  &:after {
+    z-index: 2;
+    position: absolute;
+    content: '';
+    left: -5px;
+    bottom: 0px;
+    top: 0px;
+    border-left: 5px ${colors.yellow} dashed;
+  }
   ${({ prop }: any) => {
     return prop
       ? `
@@ -54,12 +64,13 @@ const Navi = styled.nav`
   & li {
     list-style: none;
     padding: 10px;
+    font-size: 1.3rem;
   }
 `;
 
 const ListItem = styled.li`
-  ${({ prop }: any) =>
-    prop ? 'border-bottom: 1px solid rgba(0, 0, 0, 0.1);' : ''}
+  border-bottom: 2px solid;
+  border-color: ${(args: any) => args.prop || 'transparent'};
 `;
 
 const A = styled.a`
@@ -80,10 +91,23 @@ const MenuHolder = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding: 0px;
-  right: 15px;
-  top: 13px;
+  padding-top: 15px;
+  padding-right: 15px;
+  right: auto;
+  left: auto;
   position: fixed;
+  max-width: 600px;
+  width: 100%;
+`;
+
+const Logo = styled(Image)`
+  margin-top: 50px;
+  margin-bottom: -20px;
+`;
+
+const Icon = styled(Image)`
+  width: 100px;
+  margin: 20px;
 `;
 
 interface Props {
@@ -108,13 +132,14 @@ class Navigation extends React.Component<Props, State> {
     return (
       <Container>
         <Header>
-          <MenuHolder><MenuIcon onClick={ev => this.toggleNavigation(ev)}/></MenuHolder>
-        <Image src="static/logo.svg" alt="logo" />
+          <MenuHolder>
+            <MenuIcon onClick={ev => this.toggleNavigation(ev)} />
+          </MenuHolder>
+          <Logo src="static/logo.svg" alt="logo" />
         </Header>
         <Navi prop={open}>
           <NaviHead>
-            <img src="https://placehold.it/100x50" />
-            <button onClick={ev => this.toggleNavigation(ev)}>Sulje</button>
+            <Icon src="static/icon.svg" alt="icon" />
           </NaviHead>
           <ul>{navigationStructure.map(this.renderLink)}</ul>
         </Navi>

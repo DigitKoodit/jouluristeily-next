@@ -4,7 +4,7 @@ import { colors, shadows } from '../../styles/stylesheet';
 const Line = styled.span`
   height: 5px;
   width: 100%;
-  margin: 3px 0px;
+  margin-bottom: 6px;
   background-color ${colors.yellow};
   border-radius: 2px;
   box-shadow: ${shadows.low};
@@ -17,8 +17,8 @@ const Box = styled.div`
   flex-direction: column;
   width: 40px;
   height: 40px;
-  justify-content: center;
-  padding: 0px 4px;
+  justify-content: flex-start;
+  padding: 4px 4px;
   &:hover > * {
     background-color: ${colors.red};
   }

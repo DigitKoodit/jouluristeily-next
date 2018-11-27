@@ -2,6 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { colors, fonts } from '../styles/stylesheet';
 
+const quotes = require('../static/quotes.json');
+
 const Footer = styled.footer`
   padding: 20px;
   width: 100%;
@@ -14,7 +16,7 @@ const Footer = styled.footer`
   &:after {
     z-index: 0;
     position: absolute;
-    content: "";
+    content: '';
     left: 5px;
     right: 5px;
     top: -5px;
@@ -22,4 +24,6 @@ const Footer = styled.footer`
   }
 `;
 
-export default ({ children }) => <Footer>{children}</Footer>;
+export default () => (
+  <Footer>{quotes[Math.floor(Math.random() * quotes.length)]}</Footer>
+);

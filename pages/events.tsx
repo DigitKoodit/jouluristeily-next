@@ -1,13 +1,22 @@
 import * as React from 'react';
 import { createApi } from '../core/api';
 import { ContentType } from 'contentful';
-import { format } from 'date-fns';
 import propLoader from '../core/propLoader';
+import Event from '../components/Event';
+import { compareAsc } from 'date-fns';
+import styled from 'styled-components';
 
 interface Props {
   page?: any;
   events: CruiseEvent[];
 }
+
+const EventContainer = styled.div`
+  padding: 10px 10px;
+  max-height: 60vh;
+  overflow: scroll;
+  width: 100%;
+`;
 
 const fetchProps = async () =>
   createApi()
@@ -20,28 +29,17 @@ const fetchProps = async () =>
     }));
 
 const Events: React.SFC<Props> = (props: Props) => {
-  const renderEvent = (event: CruiseEvent) => {
-    const { title, startTime, endTime, location, deck, id } = event;
-    return (
-      <div key={id}>
-        <h3>{title}</h3>
-        <h4>
-          {format(startTime, 'dd HH:mm', { locale: 'fi' })} -{' '}
-          {format(endTime, 'dd HH:mm', { locale: 'fi' })}
-        </h4>
-        <h4>
-          {location} - Kansi {deck}
-        </h4>
-      </div>
-    );
-  };
-
   const { events } = props;
   const sortedEvents =
-    events && events.sort(ev => new Date(ev.startTime).getTime());
+    events && events.sort((a, b) => compareAsc(a.startTime, b.startTime));
   return (
     <React.Fragment>
-      {sortedEvents && sortedEvents.map(renderEvent)}
+      <EventContainer>
+        {sortedEvents &&
+          sortedEvents.map(event => (
+            <Event key={`${event.title}-${event.startTime}`} event={event} />
+          ))}
+      </EventContainer>
     </React.Fragment>
   );
 };

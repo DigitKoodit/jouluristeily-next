@@ -2,7 +2,7 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 import { Page } from '../components/Styled/Common';
 
-const propLoader = (Component: React.SFC<any | React.Component>, loader) => {
+const propLoader = (Component: any, loader) => {
   return class extends React.Component<any, any> {
     static getInitialProps() {
       return loader();

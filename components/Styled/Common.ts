@@ -44,4 +44,5 @@ export const Page = styled.div`
   max-width: 600px;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
 `;

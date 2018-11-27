@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import marked from 'marked';
 import { fonts, colors } from '../../styles/stylesheet';
 
 const Markdown = styled.div`
@@ -7,7 +8,7 @@ const Markdown = styled.div`
   overflow: scroll;
   & > h1 {
     font-family: ${fonts.title};
-    color: ${colors.red}
+    color: ${colors.red};
   }
 
   & > p {
@@ -19,6 +20,8 @@ interface Props {
   content: string;
 }
 
-export default ({content}: Props) => (
-  <Markdown dangerouslySetInnerHTML={{__html: content}} />
+export default ({ content }: Props) => (
+  <Markdown
+    dangerouslySetInnerHTML={{ __html: marked(content, { sanitize: true }) }}
+  />
 );

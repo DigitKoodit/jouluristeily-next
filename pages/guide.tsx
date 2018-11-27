@@ -3,9 +3,9 @@ import propLoader from '../core/propLoader';
 import { fetchPageData } from '../core/api';
 import Markdown from '../components/Styled/Markdown';
 
-const HOME_ID = 'id_home';
+const PAGE_ID = 'id_guide';
 
-const Index: React.SFC<any> = (props: any) => {
+const Page: React.SFC<any> = (props: any) => {
   const { text } = props;
   return (
     <React.Fragment>
@@ -14,6 +14,6 @@ const Index: React.SFC<any> = (props: any) => {
   );
 };
 
-const pageLoader = fetchPageData(HOME_ID);
+const pageLoader = fetchPageData(PAGE_ID);
 
-export default propLoader(Index, pageLoader);
+export default propLoader(Page, pageLoader);

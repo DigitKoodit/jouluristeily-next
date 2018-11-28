@@ -1,6 +1,45 @@
 import { fonts } from '../../styles/stylesheet';
 import styled from 'styled-components';
 
+export const fadeInTop = `
+  @keyframes fade-in-top {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const fadeIn = `
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateX(-15x);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+`;
+
+export const fadeInLeft = `
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+`;
+
 export const Html = styled.html`
   box-sizing: border-box;
   padding: 0px;
@@ -48,41 +87,14 @@ export const Page = styled.div`
   padding-bottom: 50px;
 `;
 
-export const fadeInTop = `
-  @keyframes fade-in-top {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-export const fadeIn = `
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateX(-15x);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-`;
-
-export const fadeInLeft = `
-  @keyframes fade-in-left {
-    from {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+export const PlaceHolder = styled.p`
+  ${fadeInLeft}
+  animation: fade-in-left .5s ease forwards;
+  animation-delay: 300ms;
+  opacity: 0;
+  width: 100%;
+  padding: 40px;
+  font-family: ${fonts.secondary};
+  font-size: 1.1rem;
+  text-align: center;
 `;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { format, isAfter, isBefore } from 'date-fns';
+import { format, isAfter, isBefore, isWithinRange } from 'date-fns';
 import { fonts, colors } from '../styles/stylesheet';
 import Markdown from './Styled/Markdown';
 import { fadeInTop } from './Styled/Common';
@@ -17,7 +17,7 @@ const Container = styled.div`
   overflow: hidden;
   transition: all 0.1s ease-in-out;
   animation: fade-in-top ease 0.5s forwards;
-  animation-delay: ${({ prop }: number) => prop}00ms;
+  animation-delay: ${({ prop }: any) => prop}00ms;
   &:last-child {
     border-bottom: none;
   }
@@ -29,6 +29,7 @@ const Container = styled.div`
     padding: 0px;
     & > h3 {
       font-size: 0.8rem;
+      font-family: ${fonts.paragraph}
     }
     & > p {
       font-family: ${fonts.paragraph};
@@ -77,7 +78,7 @@ interface Props {
   event: CruiseEvent;
   open: boolean;
   index: number;
-  onClick: (x?: any) => void;
+  onClick?: (x?: any) => void;
 }
 
 const Event: React.SFC<Props> = props => {
@@ -89,8 +90,8 @@ const Event: React.SFC<Props> = props => {
   const deckString = `${deck ? `Kansi ${deck}` : ''}`;
   const locationString = `${location ? location : ''} `;
   const currentTime = new Date();
-  const isActive =
-    isAfter(currentTime, startTime) && isBefore(currentTime, endTime);
+  const comparable = !!startTime && !!endTime;
+  const isActive = comparable && isWithinRange(currentTime, startTime, endTime);
   const Wrapper = isActive ? Active : Container;
   return (
     <Wrapper prop={index} onClick={onClick}>

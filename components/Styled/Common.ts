@@ -74,7 +74,6 @@ export const fadeIn = `
   }
 `;
 
-
 export const fadeInLeft = `
   @keyframes fade-in-left {
     from {

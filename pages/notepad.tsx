@@ -36,7 +36,7 @@ const TextField = styled.input`
   border: none;
   font-family: ${fonts.paragraph};
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   flex: 1;
   min-width: 0px;
 `;
@@ -169,7 +169,7 @@ class Notepad extends React.Component<any, State> {
             value={this.state.current}
             onChange={ev => this.onChange(ev)}
           />
-        <Button onClick={ev => this.saveNote(ev)}>Tallenna</Button>
+          <Button onClick={ev => this.saveNote(ev)}>Tallenna</Button>
         </NoteForm>
         {this.renderNotes()}
       </Container>

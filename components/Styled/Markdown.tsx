@@ -10,24 +10,27 @@ const Markdown = styled.div`
   overflow-y: scroll;
   overflow-wrap: break-word;
   width: 100%;
-  & > h1, h2, h3 {
+  & > h1,
+  h2,
+  h3 {
     opacity: 0;
-    animation: fade-in-left .5s ease forwards;
+    animation: fade-in-left 0.5s ease forwards;
     font-family: ${fonts.title};
     color: ${colors.red};
   }
 
-  & > h2, h3 {
+  & > h2,
+  h3 {
     opacity: 0;
     color: ${colors.black};
-    delay: .1s;
+    delay: 0.1s;
   }
 
   & > p {
     opacity: 0;
-    animation: fade-in-left .5s ease forwards;
+    animation: fade-in-left 0.5s ease forwards;
     font-family: ${fonts.paragraph};
-    animation-delay: .2s;
+    animation-delay: 0.2s;
   }
 
   & img {

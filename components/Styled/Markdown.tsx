@@ -5,7 +5,9 @@ import { fonts, colors } from '../../styles/stylesheet';
 
 const Markdown = styled.div`
   padding: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+  width: 100%;
   & > h1 {
     font-family: ${fonts.title};
     color: ${colors.red};

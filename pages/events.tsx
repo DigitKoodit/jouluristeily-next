@@ -58,6 +58,7 @@ class Events extends React.Component<Props, State> {
               <Event
                 onClick={() => this.setOpen(idx)}
                 open={idx === open}
+                index={idx}
                 key={`${event.title}-${event.startTime}`}
                 event={event}
               />

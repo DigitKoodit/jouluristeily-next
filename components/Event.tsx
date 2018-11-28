@@ -29,7 +29,7 @@ const Container = styled.div`
     padding: 0px;
     & > h3 {
       font-size: 0.8rem;
-      font-family: ${fonts.paragraph}
+      font-family: ${fonts.paragraph};
     }
     & > p {
       font-family: ${fonts.paragraph};

@@ -31,7 +31,7 @@ const FilterButton = styled.button`
   font-size: 1.2rem;
   font-family: ${fonts.secondary};
   padding: 0px 20px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   &:hover {
     transform: scale(1.2);
     color: ${colors.red};
@@ -63,40 +63,72 @@ class Events extends React.Component<Props, State> {
     this.state = { open: null, filter: 'ONGOING' };
   }
   setOpen(index: number) {
-    this.setState((state): State => {
-      if (state.open === index) {
-        return { ...state, open: null };
+    this.setState(
+      (state): State => {
+        if (state.open === index) {
+          return { ...state, open: null };
+        }
+        return { ...state, open: index };
       }
-      return { ...state, open: index };
-    });
+    );
   }
 
   changeFilter(filter: FilterOption) {
-    this.setState({open: null, filter });
+    this.setState({ open: null, filter });
   }
 
   renderOngoing(events: CruiseEvent[]) {
     const { open } = this.state;
-    const filteredEvents = events.filter((event: CruiseEvent) => isWithinRange(Date.now(), event.startTime, event.endTime));
+    const filteredEvents = events.filter((event: CruiseEvent) =>
+      isWithinRange(Date.now(), event.startTime, event.endTime)
+    );
     if (!filteredEvents.length) {
-      return <PlaceHolder>Tyhjän ohjelman syndroomaan suosittelemme vieraisiin tutustumista. Tai mee vaikka bisselle.</PlaceHolder>;
+      return (
+        <PlaceHolder>
+          Tyhjän ohjelman syndroomaan suosittelemme vieraisiin tutustumista. Tai
+          mee vaikka bisselle.
+        </PlaceHolder>
+      );
     }
     return (
       <React.Fragment>
-        {filteredEvents.map((event, idx) => <Event index={idx} open={idx===open} key={`${event.title}-${event.startTime}`} event={event} />)}
+        {filteredEvents.map((event, idx) => (
+          <Event
+            index={idx}
+            onClick={() => this.setOpen(idx)}
+            open={idx === open}
+            key={`${event.title}-${event.startTime}`}
+            event={event}
+          />
+        ))}
       </React.Fragment>
     );
   }
 
   renderUpcoming(events: CruiseEvent[]) {
     const { open } = this.state;
-    const filteredEvents = events.filter((event: CruiseEvent) => isAfter(event.endTime, Date.now()));
+    const filteredEvents = events.filter((event: CruiseEvent) =>
+      isAfter(event.endTime, Date.now())
+    );
     if (!filteredEvents.length) {
-      return <PlaceHolder>Tyhjään ohjelmaan suosittelemme vieraisiin tutustumista. Tai mee vaikka bisselle.</PlaceHolder>;
+      return (
+        <PlaceHolder>
+          Tyhjään ohjelmaan suosittelemme vieraisiin tutustumista. Tai mee
+          vaikka bisselle.
+        </PlaceHolder>
+      );
     }
     return (
       <React.Fragment>
-        {filteredEvents.map((event, idx) => <Event index={idx} open={idx===open} key={`${event.title}-${event.startTime}`} event={event} />)}
+        {filteredEvents.map((event, idx) => (
+          <Event
+            index={idx}
+            onClick={() => this.setOpen(idx)}
+            open={idx === open}
+            key={`${event.title}-${event.startTime}`}
+            event={event}
+          />
+        ))}
       </React.Fragment>
     );
   }
@@ -106,15 +138,15 @@ class Events extends React.Component<Props, State> {
     return (
       <React.Fragment>
         {events &&
-            events.map((event: CruiseEvent, idx: number) => (
-              <Event
-                onClick={() => this.setOpen(idx)}
-                open={idx === open}
-                index={idx}
-                key={`${event.title}-${event.startTime}`}
-                event={event}
-              />
-            ))} 
+          events.map((event: CruiseEvent, idx: number) => (
+            <Event
+              onClick={() => this.setOpen(idx)}
+              open={idx === open}
+              index={idx}
+              key={`${event.title}-${event.startTime}`}
+              event={event}
+            />
+          ))}
       </React.Fragment>
     );
   }
@@ -127,9 +159,21 @@ class Events extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <FilterContainer>
-          <FilterButton prop={filter==='ONGOING'} onClick={() => this.changeFilter('ONGOING')}>Nyt</FilterButton>
-          <FilterButton prop={filter==='UPCOMING'} onClick={() => this.changeFilter('UPCOMING')}>Tulossa</FilterButton>
-          <FilterButton prop={filter==='ALL'} onClick={() => this.changeFilter('ALL')}>Kaikki</FilterButton>
+          <FilterButton
+            prop={filter === 'ONGOING'}
+            onClick={() => this.changeFilter('ONGOING')}>
+            Nyt
+          </FilterButton>
+          <FilterButton
+            prop={filter === 'UPCOMING'}
+            onClick={() => this.changeFilter('UPCOMING')}>
+            Tulossa
+          </FilterButton>
+          <FilterButton
+            prop={filter === 'ALL'}
+            onClick={() => this.changeFilter('ALL')}>
+            Kaikki
+          </FilterButton>
         </FilterContainer>
         <EventContainer>
           {filter === 'ONGOING' && this.renderOngoing(sortedEvents)}

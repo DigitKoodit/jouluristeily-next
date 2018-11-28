@@ -3,7 +3,11 @@ import propLoader from '../core/propLoader';
 import styled from 'styled-components';
 import { fonts, shadows, colors } from '../styles/stylesheet';
 import { compareAsc, format } from 'date-fns';
-import { PlaceHolder, fadeInTop, fadeInLeft } from '../components/Styled/Common';
+import {
+  PlaceHolder,
+  fadeInTop,
+  fadeInLeft
+} from '../components/Styled/Common';
 
 const STORAGE_KEY = 'jr_notes';
 
@@ -64,7 +68,7 @@ const Button = styled.button`
 const Title = styled.h1`
   ${fadeInTop}
   opacity: 0;
-  animation: fade-in-top .5s ease forwards;
+  animation: fade-in-top 0.5s ease forwards;
   text-align: left;
   color: ${colors.red};
   width: 100%;
@@ -109,7 +113,6 @@ const NoteList = styled.div`
   width: 100%;
   overflow: auto;
 `;
-
 
 class Notepad extends React.Component<any, State> {
   localStorage: any;
@@ -157,11 +160,15 @@ class Notepad extends React.Component<any, State> {
     const { notes } = this.state;
     return (
       <NoteList>
-        {notes.length === 0 ? <PlaceHolder>Ei tallennettuja muistiinpanoja.</PlaceHolder> : ''}
+        {notes.length === 0 ? (
+          <PlaceHolder>Ei tallennettuja muistiinpanoja.</PlaceHolder>
+        ) : (
+          ''
+        )}
         {notes
           .sort((a, b) => compareAsc(b.timeStamp, a.timeStamp))
           .map(note => (
-            <Note>
+            <Note key={note.timeStamp.toString()}>
               <p>{note.content}</p>
               <Time>{format(note.timeStamp, ' DD.MM. klo HH:mm')}</Time>
             </Note>

@@ -14,6 +14,14 @@ const Markdown = styled.div`
   & > p {
     font-family: ${fonts.paragraph};
   }
+
+  & img {
+    width: 400px;
+    max-width: 100%;
+    display: inherit;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 interface Props {

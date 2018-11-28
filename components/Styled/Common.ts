@@ -45,4 +45,5 @@ export const Page = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  padding-bottom: 50px;
 `;

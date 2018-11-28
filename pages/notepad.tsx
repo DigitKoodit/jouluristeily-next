@@ -16,19 +16,29 @@ interface State {
   current: string;
 }
 
-const TextField = styled.textarea`
-  width: 100%;
+const NoteForm = styled.form`
+  width 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-size: border-box;
+`;
+
+const TextField = styled.input`
   padding: 10px 10px;
   position: relative;
-  margin-bottom: 10px;
+  margin-right: 5px;
   border-radius: 4px;
   background: rgba(255, 229, 120, 0.5);
   outline: none;
   box-shadow: none;
   border: none;
-  max-width: 100%;
-  height: 100px;
   font-family: ${fonts.paragraph};
+  font-weight: 600;
+  font-size: .9rem;
+  flex: 1;
+  min-width: 0px;
 `;
 
 const Button = styled.button`
@@ -39,7 +49,6 @@ const Button = styled.button`
   font-size: 1rem;
   border: none;
   border-radius: 4px;
-  align-self: flex-end;
   font-family: ${fonts.secondary};
   &:hover {
     cursor: pointer;
@@ -51,14 +60,6 @@ const Title = styled.h1`
   text-align: left;
   color: ${colors.red};
   width: 100%;
-  font-family: ${fonts.title};
-`;
-
-const SubTitle = styled.h2`
-  color: ${colors.black};
-  text-align: left;
-  width: 100%;
-  font-size: 1.2rem;
   font-family: ${fonts.title};
 `;
 
@@ -152,7 +153,7 @@ class Notepad extends React.Component<any, State> {
           .map(note => (
             <Note>
               <p>{note.content}</p>
-              <Time>{format(note.timeStamp, 'hh:mm, DD.MM.YYYY')}</Time>
+              <Time>{format(note.timeStamp, ' DD.MM. klo HH:mm')}</Time>
             </Note>
           ))}
       </NoteList>
@@ -163,12 +164,13 @@ class Notepad extends React.Component<any, State> {
     return (
       <Container>
         <Title>Hyttimuistio</Title>
-        <TextField
-          value={this.state.current}
-          onChange={ev => this.onChange(ev)}
-        />
+        <NoteForm>
+          <TextField
+            value={this.state.current}
+            onChange={ev => this.onChange(ev)}
+          />
         <Button onClick={ev => this.saveNote(ev)}>Tallenna</Button>
-        <SubTitle>Aikaisemmat muistiinpanot</SubTitle>
+        </NoteForm>
         {this.renderNotes()}
       </Container>
     );

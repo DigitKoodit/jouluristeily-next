@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
 import { fonts, colors } from '../../styles/stylesheet';
+import { fadeInLeft } from './Common';
 
 const Markdown = styled.div`
   padding: 10px;

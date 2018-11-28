@@ -110,7 +110,7 @@ const MenuHolder = styled.div`
 `;
 
 const Logo = styled(Image)`
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: -20px;
 `;
 

@@ -97,4 +97,7 @@ export const PlaceHolder = styled.p`
   font-family: ${fonts.secondary};
   font-size: 1.1rem;
   text-align: center;
+  max-width: 100%;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
 `;

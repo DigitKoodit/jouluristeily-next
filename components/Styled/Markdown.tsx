@@ -17,6 +17,7 @@ const Markdown = styled.div`
     animation: fade-in-left 0.5s ease forwards;
     font-family: ${fonts.title};
     color: ${colors.red};
+    font-weight: 400;
   }
 
   & > h2,
@@ -24,6 +25,7 @@ const Markdown = styled.div`
     opacity: 0;
     color: ${colors.black};
     delay: 0.1s;
+    font-weight: 400;
   }
 
   & > p {

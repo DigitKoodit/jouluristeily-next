@@ -6,6 +6,8 @@ import Header from './Header';
 import { NaviItem } from './Layout';
 import { Image } from './Styled/Common';
 import MenuIcon from './Styled/MenuIcon';
+import MenuCloseIcon from './Styled/MenuCloseIcon';
+
 
 interface NavigationStructure {
   href: string;
@@ -22,6 +24,17 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+const NaviContainer = styled.div`
+  position: relative;
+  padding-top: 26px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Navi = styled.nav`
   right: -300px;
   top: 0;
@@ -32,13 +45,8 @@ const Navi = styled.nav`
   background-color: ${colors.white};
   height: 100vh;
   top: 0px;
-  padding: 20px;
+  padding: 18px;
   box-sizing: border-box;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-left: 5px solid ${colors.red};
   &:after {
     z-index: 2;
@@ -98,6 +106,7 @@ const MenuHolder = styled.div`
   position: fixed;
   max-width: 600px;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const Logo = styled(Image)`
@@ -138,10 +147,13 @@ class Navigation extends React.Component<Props, State> {
           <Logo src="static/logo.svg" alt="logo" />
         </Header>
         <Navi prop={open}>
-          <NaviHead>
-            <Icon src="static/icon.svg" alt="icon" />
-          </NaviHead>
-          <ul>{navigationStructure.map(this.renderLink)}</ul>
+          <NaviContainer>
+            <MenuCloseIcon onClick={ev => this.toggleNavigation(ev)} />
+            <NaviHead>
+              <Icon src="static/icon.svg" alt="icon" />
+            </NaviHead>
+            <ul>{navigationStructure.map(this.renderLink)}</ul>
+          </NaviContainer>
         </Navi>
       </Container>
     );

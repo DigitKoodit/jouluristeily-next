@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "env": {
+    "CONTENTFUL_TOKEN":"@contentful_token",
+    "CONTENTFUL_SPACE_ID":"@contentful_space_id"
+  }
+}

@@ -25,7 +25,7 @@ const Container = styled.div`
     & > h3 { font-size: .8rem; }
     & > p {
       font-family: ${fonts.paragraph};
-      font-size: .9rem;
+      font-size: .8rem;
       padding: 5px 0px;
       margin: 0;
     }

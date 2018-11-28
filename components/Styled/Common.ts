@@ -46,3 +46,43 @@ export const Page = styled.div`
   justify-content: flex-start;
   width: 100%;
 `;
+
+export const fadeInTop = `
+  @keyframes fade-in-top {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const fadeIn = `
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateX(-15x);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+`;
+
+
+export const fadeInLeft = `
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+`;

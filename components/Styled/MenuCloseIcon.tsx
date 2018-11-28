@@ -10,7 +10,7 @@ const Line = styled.span`
   height: 5px;
   width: 100%;
   margin-bottom: 6px;
-  background-color ${colors.black};
+  background-color ${colors.yellow};
   border-radius: 2px;
   transition: all .1s ease-in-out;
   transform: rotate(135deg);
@@ -21,7 +21,7 @@ const Line = styled.span`
 
 const BoxContainer = styled.div`
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
 `;
 
@@ -34,19 +34,24 @@ const Box = styled.div`
   height: 40px;
   justify-content: flex-start;
   padding: 4px 4px;
+  &:hover {
+    & > * {
+      background-color: ${colors.red};
+    }
+  }
 `;
 
 interface Props {
-    onClick: (x: any) => void;
+  onClick: (x: any) => void;
 }
 
 const MenuIcon = (props: Props) => (
-    <BoxContainer>
-        <Box role="button" onClick={props.onClick}>
-            <Line />
-            <Line />
-        </Box>
-    </BoxContainer>
+  <BoxContainer>
+    <Box role="button" onClick={props.onClick}>
+      <Line />
+      <Line />
+    </Box>
+  </BoxContainer>
 );
 
 export default MenuIcon;

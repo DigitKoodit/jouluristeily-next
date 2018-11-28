@@ -8,7 +8,6 @@ import { Image } from './Styled/Common';
 import MenuIcon from './Styled/MenuIcon';
 import MenuCloseIcon from './Styled/MenuCloseIcon';
 
-
 interface NavigationStructure {
   href: string;
   label: string;

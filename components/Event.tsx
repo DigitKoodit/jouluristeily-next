@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { format, isAfter, isBefore } from 'date-fns';
 import { fonts, colors } from '../styles/stylesheet';
 import Markdown from './Styled/Markdown';
+import { fadeInTop } from './Styled/Common';
 
 const Container = styled.div`
+  ${fadeInTop}
+  opacity: 0;
   width: 100%;
   padding: 10px 10px;
   position: relative;
@@ -12,7 +15,9 @@ const Container = styled.div`
   border-radius: 4px;
   background: rgba(255, 229, 120, 0.5);
   overflow: hidden;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  animation: fade-in-top ease 0.5s forwards;
+  animation-delay: ${({ prop }: number) => prop}00ms;
   &:last-child {
     border-bottom: none;
   }
@@ -22,10 +27,12 @@ const Container = styled.div`
 
   & > div {
     padding: 0px;
-    & > h3 { font-size: .8rem; }
+    & > h3 {
+      font-size: 0.8rem;
+    }
     & > p {
       font-family: ${fonts.paragraph};
-      font-size: .8rem;
+      font-size: 0.8rem;
       padding: 5px 0px;
       margin: 0;
     }
@@ -69,11 +76,12 @@ const Deck = styled.span`
 interface Props {
   event: CruiseEvent;
   open: boolean;
+  index: number;
   onClick: (x?: any) => void;
 }
 
 const Event: React.SFC<Props> = props => {
-  const { event, onClick, open } = props;
+  const { event, onClick, open, index } = props;
   const { title, startTime, endTime, deck, location, description } = event;
   const timeString = `${format(startTime, 'HH:mm', { locale: 'fi' })} ${
     endTime ? format(endTime, '- HH:mm', { locale: 'fi' }) : ''
@@ -85,7 +93,7 @@ const Event: React.SFC<Props> = props => {
     isAfter(currentTime, startTime) && isBefore(currentTime, endTime);
   const Wrapper = isActive ? Active : Container;
   return (
-    <Wrapper onClick={onClick}>
+    <Wrapper prop={index} onClick={onClick}>
       <Label>{title}</Label>
       <Deck>{deckString}</Deck>
       <Time>

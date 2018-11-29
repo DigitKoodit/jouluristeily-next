@@ -40,7 +40,7 @@ const Navi = styled.nav`
   transition: all 0.2s ease-in-out;
   width: 300px;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   background-color: ${colors.white};
   height: 100vh;
   top: 0px;
@@ -48,7 +48,7 @@ const Navi = styled.nav`
   box-sizing: border-box;
   border-left: 5px solid ${colors.red};
   &:after {
-    z-index: 2;
+    z-index: 4;
     position: absolute;
     content: '';
     left: -5px;
@@ -103,6 +103,7 @@ const MenuHolder = styled.div`
   right: auto;
   left: auto;
   position: fixed;
+  z-index: 2;
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;

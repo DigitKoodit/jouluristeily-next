@@ -7,6 +7,7 @@ import { compareAsc, isWithinRange, isAfter } from 'date-fns';
 import styled from 'styled-components';
 import { fonts, colors } from '../styles/stylesheet';
 import { PlaceHolder, fadeInTop } from '../components/Styled/Common';
+import { logEvent } from '../core/analytics';
 
 const EventContainer = styled.div`
   padding: 10px;
@@ -37,7 +38,7 @@ const FilterButton = styled.button`
     color: ${colors.red};
     cursor: pointer;
   }
-  ${(args: any) => args.prop && activeButtonStyle};
+  ${(args: any) => args.prop && activeButtonStyle}
 `;
 
 const activeButtonStyle = `
@@ -74,6 +75,7 @@ class Events extends React.Component<Props, State> {
   }
 
   changeFilter(filter: FilterOption) {
+    logEvent('FILTER_CHANGE', filter);
     this.setState({ open: null, filter });
   }
 

@@ -5,8 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production node ./server.js",
-    "prettify": "prettier --write \"./{pages,components}/**/*.{ts,tsx}\"",
-    "lint": "npm run prettify && tslint --fix \"./{pages,components}/**/*.{ts,tsx}\"",
+    "prettify": "prettier --write \"./{pages,components,core}/**/*.{ts,tsx}\"",
+    "lint": "npm run prettify && tslint --fix \"./{pages,components,core}/**/*.{ts,tsx}\"",
     "type-check": "tsc"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "npm": "^6.4.1",
     "react": "16.5.2",
     "react-dom": "16.5.2",
+    "react-ga": "^2.5.6",
     "styled-components": "^4.0.2",
     "tslint": "^5.11.0"
   },

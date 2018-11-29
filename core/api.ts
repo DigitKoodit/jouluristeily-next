@@ -22,10 +22,12 @@ export function createApi() {
   };
 }
 
-export const fetchPageData = (pageId) => async () =>
-  createApi().fetchEventData('page').then((data: any) => {
-    const pageData = data
-      .map(item => item.fields)
-      .find(item => item.id.toLowerCase() === pageId);
-    return { ...pageData };
-  });
+export const fetchPageData = pageId => async () =>
+  createApi()
+    .fetchEventData('page')
+    .then((data: any) => {
+      const pageData = data
+        .map(item => item.fields)
+        .find(item => item.id.toLowerCase() === pageId);
+      return { ...pageData };
+    });

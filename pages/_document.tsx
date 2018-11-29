@@ -17,6 +17,7 @@ export default class MyDocument extends Document<props> {
     const styleTags = sheet.getStyleElement();
     return { ...page, styleTags };
   }
+
   render() {
     return (
       <Html lang="en">

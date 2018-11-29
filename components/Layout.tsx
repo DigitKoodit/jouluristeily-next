@@ -4,9 +4,11 @@ import Navigation from './Navigation';
 import styled from 'styled-components';
 import Footer from './Footer';
 import { colors } from '../styles/stylesheet';
+import { initGA, logPageView } from '../core/analytics';
 
 type Props = {
   title?: string;
+  children: any;
 };
 
 const Content = styled.section`
@@ -35,20 +37,35 @@ const naviTree: NaviItem[] = [
   { href: '/afterlecture', label: 'After Lecture' }
 ];
 
-const Layout: React.SFC<Props> = ({ children }) => (
-  <React.Fragment>
-    <Head>
-      <title>Jouluristeily 2018</title>
-      <link rel="shortcut icon" href="static/icon.svg" />
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <Content>
-      <Navigation navigationStructure={naviTree} />
-      {children}
-      <Footer />
-    </Content>
-  </React.Fragment>
-);
+class Layout extends React.Component<Props> {
+  componentDidMount() {
+    if (!window['GA_INITIALIZED']) {
+      initGA();
+      window['GA_INITIALIZED'] = true;
+    }
+    logPageView();
+  }
+  render() {
+    const { children } = this.props;
+    return (
+      <React.Fragment>
+        <Head>
+          <title>Jouluristeily 2018</title>
+          <link rel="shortcut icon" href="static/icon.svg" />
+          <meta charSet="utf-8" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
+        <Content>
+          <Navigation navigationStructure={naviTree} />
+          {children}
+          <Footer />
+        </Content>
+      </React.Fragment>
+    );
+  }
+}
 
 export default Layout;

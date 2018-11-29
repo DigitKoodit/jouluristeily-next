@@ -8,6 +8,7 @@ import {
   fadeInTop,
   fadeInLeft
 } from '../components/Styled/Common';
+import { logEvent } from '../core/analytics';
 
 const STORAGE_KEY = 'jr_notes';
 
@@ -145,6 +146,7 @@ class Notepad extends React.Component<any, State> {
       },
       () => this.pushToStorage(this.state)
     );
+    logEvent('NOTE', 'SAVED');
   };
 
   onChange = (ev: React.ChangeEvent<any>) => {

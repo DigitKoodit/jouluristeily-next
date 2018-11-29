@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node ./server.js",
     "prettify": "prettier --write \"./{pages,components}/**/*.{ts,tsx}\"",
     "lint": "npm run prettify && tslint --fix \"./{pages,components}/**/*.{ts,tsx}\"",
     "type-check": "tsc"
@@ -21,6 +21,7 @@
     "dotenv": "^6.1.0",
     "marked": "^0.5.2",
     "next": "7.0.2",
+    "next-offline": "^3.2.2",
     "npm": "^6.4.1",
     "react": "16.5.2",
     "react-dom": "16.5.2",

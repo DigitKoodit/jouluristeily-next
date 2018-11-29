@@ -63,12 +63,13 @@ class Events extends React.Component<Props, State> {
     super(props);
     this.state = { open: null, filter: 'ONGOING' };
   }
-  setOpen(index: number) {
+  setOpen(index: number, title: string) {
     this.setState(
       (state): State => {
         if (state.open === index) {
           return { ...state, open: null };
         }
+        logEvent('OPEN_EVENT', title)
         return { ...state, open: index };
       }
     );
@@ -97,7 +98,7 @@ class Events extends React.Component<Props, State> {
         {filteredEvents.map((event, idx) => (
           <Event
             index={idx}
-            onClick={() => this.setOpen(idx)}
+            onClick={() => this.setOpen(idx, event.title)}
             open={idx === open}
             key={`${event.title}-${event.startTime}`}
             event={event}
@@ -125,7 +126,7 @@ class Events extends React.Component<Props, State> {
         {filteredEvents.map((event, idx) => (
           <Event
             index={idx}
-            onClick={() => this.setOpen(idx)}
+            onClick={() => this.setOpen(idx, event.title)}
             open={idx === open}
             key={`${event.title}-${event.startTime}`}
             event={event}
@@ -142,7 +143,7 @@ class Events extends React.Component<Props, State> {
         {events &&
           events.map((event: CruiseEvent, idx: number) => (
             <Event
-              onClick={() => this.setOpen(idx)}
+              onClick={() => this.setOpen(idx, event.title)}
               open={idx === open}
               index={idx}
               key={`${event.title}-${event.startTime}`}

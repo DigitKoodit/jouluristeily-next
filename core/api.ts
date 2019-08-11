@@ -13,9 +13,9 @@ export function createApi() {
         .catch(error => console.error('err', error)); // tslint:disable-line
     },
 
-    fetchEventData: id => {
+    fetchContentfulData: id => {
       return client
-        .getEntries({ content_type: id })
+        .getEntries({ content_type: id, include: 2 })
         .then(response => response.items)
         .catch(err => console.error('API-call went wrong', err)); // tslint:disable-line
     }
@@ -24,7 +24,7 @@ export function createApi() {
 
 export const fetchPageData = pageId => async () =>
   createApi()
-    .fetchEventData('page')
+    .fetchContentfulData('page')
     .then((data: any) => {
       const pageData = data
         .map(item => item.fields)

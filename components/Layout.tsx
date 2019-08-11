@@ -29,6 +29,7 @@ export interface NaviItem {
 const naviTree: NaviItem[] = [
   { href: '/index', label: 'JR 2018' },
   { href: '/events', label: 'Ohjelma' },
+  { href: '/prices', label: 'Hinnasto' },
   { href: '/notepad', label: 'Hyttimuistio', divider: colors.lightred },
   // { href: '/namegenerator', label: 'Risteilynimeni'},
   { href: '/guide', label: 'Ohjeet' },

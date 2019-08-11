@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { createApi } from '../core/api';
 import { ContentType } from 'contentful';
+import styled from 'styled-components';
+import { createApi } from '../core/api';
 import propLoader from '../core/propLoader';
 import Event from '../components/Event';
 import { compareAsc, isWithinRange, isAfter } from 'date-fns';
-import styled from 'styled-components';
 import { fonts, colors } from '../styles/stylesheet';
 import { PlaceHolder, fadeInTop } from '../components/Styled/Common';
 import { logEvent } from '../core/analytics';
@@ -69,7 +69,7 @@ class Events extends React.Component<Props, State> {
         if (state.open === index) {
           return { ...state, open: null };
         }
-        logEvent('OPEN_EVENT', title)
+        logEvent('OPEN_EVENT', title);
         return { ...state, open: index };
       }
     );
@@ -190,7 +190,7 @@ class Events extends React.Component<Props, State> {
 
 const fetchProps = async () =>
   createApi()
-    .fetchEventData('event')
+    .fetchContentfulData('event')
     .then((data: any[]) => ({
       events: data.map((item: ContentType) => ({
         ...item.fields,

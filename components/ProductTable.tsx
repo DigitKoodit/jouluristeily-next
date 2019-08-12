@@ -11,7 +11,8 @@ const Table = styled.table`
     text-align: center;
     border-radius: 6px;
   }
-  & td:nth-child(1), & td:nth-child(3) {
+  & td:nth-child(1),
+  & td:nth-child(3) {
     background: ${colors.lightyellow};
     font-weight: 600;
   }

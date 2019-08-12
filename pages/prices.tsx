@@ -15,7 +15,7 @@ const Page: React.SFC<any> = (props: any) => {
     <React.Fragment>
       <Markdown content={text} />
       {data.map(item => (
-        <ProductTable data={item} />
+        <ProductTable key={item.sys.id} data={item} />
       ))}
     </React.Fragment>
   );

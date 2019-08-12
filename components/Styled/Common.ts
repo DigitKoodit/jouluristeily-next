@@ -44,7 +44,9 @@ export const Html = styled.html`
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-  font-family: ${fonts.paragraph};
+  & * {
+    font-family: ${fonts.paragraph};
+  }
   & * {
     box-sizing: border-box;
   }

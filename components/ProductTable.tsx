@@ -1,20 +1,35 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { fonts } from '../styles/stylesheet';
-import { colors } from '../styles/stylesheet';
 
 const Table = styled.table`
   font-family: ${fonts.paragraph};
+  width: 100%;
+
+  & tr {
+    border-top: #444444 solid 1px;
+  }
+
   & td {
-    width: 33%;
     padding: 1rem;
     text-align: center;
-    border-radius: 6px;
+    max-height: 60px;
+    overflow: auto;
   }
-  & td:nth-child(1),
+
   & td:nth-child(3) {
-    background: ${colors.lightyellow};
+    text-align: left;
+    width: 60%;
+  }
+
+  & td:nth-child(1),
+  & td:nth-child(2) {
     font-weight: 600;
+    width: 20%;
+  }
+
+  & th {
+    padding: 1rem;
   }
 `;
 
@@ -34,13 +49,20 @@ export default props => {
     <React.Fragment>
       <Header>{data.fields.name}</Header>
       <Table>
+        <thead>
+          <tr>
+            <th>Nimi</th>
+            <th>Hinta</th>
+            <th>Kuvaus</th>
+          </tr>
+        </thead>
         <tbody>
           {data.fields.rows &&
             data.fields.rows.map(item => (
               <tr key={item.sys.id}>
                 <td>{item.fields.name}</td>
-                <td>{item.fields.description}</td>
                 <td>{item.fields.price}€</td>
+                <td>{item.fields.description}</td>
               </tr>
             ))}
         </tbody>

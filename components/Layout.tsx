@@ -27,10 +27,10 @@ export interface NaviItem {
 }
 
 const naviTree: NaviItem[] = [
-  { href: '/index', label: 'JR 2018' },
+  { href: '/index', label: 'JR 2019' },
   { href: '/events', label: 'Ohjelma' },
-  { href: '/prices', label: 'Hinnasto' },
-  { href: '/notepad', label: 'Hyttimuistio', divider: colors.lightred },
+  { href: '/prices', label: 'Hinnasto', divider: colors.lightred  },
+  // { href: '/notepad', label: 'Hyttimuistio'},
   // { href: '/namegenerator', label: 'Risteilynimeni'},
   { href: '/guide', label: 'Ohjeet' },
   { href: '/ehdot', label: 'Matkaehdot', divider: colors.lightred },

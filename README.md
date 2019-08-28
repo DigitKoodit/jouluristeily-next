@@ -11,6 +11,17 @@ The application is built using `Next.js` and used `Contentful` as it's CMS.
 - Typescript
 - Styled components for styling
 
+## Development
+
+To run the applicatou need certain secretsion, y
+
+```bash
+```
+
+## Release
+
+
+
 ## Contentful data models
 
 Contentful data models have a bit of depth to them, so I felt it likely to be of use to provide samples here.

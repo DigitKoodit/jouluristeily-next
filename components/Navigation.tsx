@@ -8,11 +8,6 @@ import { Image } from './Styled/Common';
 import MenuIcon from './Styled/MenuIcon';
 import MenuCloseIcon from './Styled/MenuCloseIcon';
 
-interface NavigationStructure {
-  href: string;
-  label: string;
-}
-
 const Container = styled.div`
   position: relative;
   width: 100%;
@@ -120,11 +115,22 @@ const Icon = styled(Image)`
 `;
 
 interface Props {
-  navigationStructure?: NavigationStructure[];
+  navigationStructure: NaviItem[];
 }
+
 interface State {
   open: boolean;
 }
+
+const RenderLink = ({ item }: { item: NaviItem }) => {
+  return (
+    <ListItem key={item.label} prop={item.divider}>
+      <Link href={item.href}>
+        <A>{item.label}</A>
+      </Link>
+    </ListItem>
+  );
+};
 
 class Navigation extends React.Component<Props, State> {
   state = { open: false };
@@ -152,22 +158,43 @@ class Navigation extends React.Component<Props, State> {
             <NaviHead>
               <Icon src="static/icon.svg" alt="icon" />
             </NaviHead>
-            <ul>{navigationStructure.map(this.renderLink)}</ul>
+            <ul>
+              {navigationStructure.map((item, idx) => (
+                <RenderLink key={`navi-${idx}`} item={item} />
+              ))}
+            </ul>
           </NaviContainer>
         </Navi>
       </Container>
     );
   }
-
-  renderLink(item: NaviItem) {
-    return (
-      <ListItem key={item.label} prop={item.divider}>
-        <Link href={item.href}>
-          <A>{item.label}</A>
-        </Link>
-      </ListItem>
-    );
-  }
 }
+
+export const StaticNavi = (props: Props) => {
+  const { navigationStructure } = props;
+  return (
+    <Container>
+      <Header>
+        <MenuHolder>
+          <MenuIcon onClick={ev => this.toggleNavigation(ev)} />
+        </MenuHolder>
+        <Logo src="static/logo.svg" alt="logo" />
+      </Header>
+      <Navi prop={open}>
+        <NaviContainer>
+          <MenuCloseIcon onClick={ev => this.toggleNavigation(ev)} />
+          <NaviHead>
+            <Icon src="static/icon.svg" alt="icon" />
+          </NaviHead>
+          <ul>
+            {navigationStructure.map((item, idx) => (
+              <RenderLink key={`navi-${idx}`} item={item} />
+            ))}
+          </ul>
+        </NaviContainer>
+      </Navi>
+    </Container>
+  );
+};
 
 export default Navigation;

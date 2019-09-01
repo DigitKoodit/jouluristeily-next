@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Footer from './Footer';
 import { colors } from '../styles/stylesheet';
 import { initGA, logPageView } from '../core/analytics';
+import { format } from 'date-fns';
 
 type Props = {
   title?: string;
@@ -27,9 +28,9 @@ export interface NaviItem {
 }
 
 const naviTree: NaviItem[] = [
-  { href: '/index', label: 'JR 2019' },
+  { href: '/index', label: `JR ${format(new Date(), 'YYYY')}` },
   { href: '/events', label: 'Ohjelma' },
-  { href: '/prices', label: 'Hinnasto', divider: colors.lightred  },
+  { href: '/prices', label: 'Hinnasto', divider: colors.lightred },
   // { href: '/notepad', label: 'Hyttimuistio'},
   // { href: '/namegenerator', label: 'Risteilynimeni'},
   { href: '/guide', label: 'Ohjeet' },
@@ -51,7 +52,7 @@ class Layout extends React.Component<Props> {
     return (
       <React.Fragment>
         <Head>
-          <title>Jouluristeily 2018</title>
+          <title>Jouluristeily {format(new Date(), 'YYYY')}</title>
           <link rel="shortcut icon" href="static/icon.svg" />
           <meta charSet="utf-8" />
           <meta

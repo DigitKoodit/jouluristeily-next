@@ -1,12 +1,13 @@
 import * as React from 'react';
 import propLoader from '../core/propLoader';
-import { fetchPageData } from '../core/api';
+import { fetchPageData, useLocalStorage } from '../core/api';
 import Markdown from '../components/Styled/Markdown';
 
 const HOME_ID = 'id_home';
 
 const Index: React.SFC<any> = (props: any) => {
-  const { text } = props;
+  const text = useLocalStorage(HOME_ID, props.text);
+
   return (
     <React.Fragment>
       <Markdown content={text} />

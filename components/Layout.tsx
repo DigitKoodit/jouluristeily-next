@@ -32,7 +32,7 @@ const naviTree: NaviItem[] = [
   { href: '/events', label: 'Ohjelma' },
   { href: '/tuplis', label: 'Tuplis' },
   { href: '/prices', label: 'Hinnasto', divider: colors.lightred },
-  // { href: '/notepad', label: 'Hyttimuistio'},
+  { href: '/notepad', label: 'Hyttimuistio' },
   // { href: '/namegenerator', label: 'Risteilynimeni'},
   { href: '/guide', label: 'Ohjeet' },
   { href: '/ehdot', label: 'Matkaehdot', divider: colors.lightred },

@@ -1,4 +1,23 @@
+import * as React from 'react';
 import { createClient } from 'contentful';
+
+export function useLocalStorage(key: string, data: any) {
+  const [storedData, setData] = React.useState(null);
+  console.log(data);
+  React.useEffect(() => {
+    const storage = window.localStorage;
+    const cached = storage.getItem(key);
+    if (!data && cached) {
+      setData(cached);
+    } else {
+      setData(data);
+      if (data) {
+        window.localStorage.setItem(key, data);
+      }
+    }
+  }, []);
+  return storedData;
+}
 
 export function createApi() {
   const client = createClient({

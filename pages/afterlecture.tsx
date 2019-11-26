@@ -1,12 +1,12 @@
 import * as React from 'react';
 import propLoader from '../core/propLoader';
-import { fetchPageData } from '../core/api';
+import { fetchPageData, useLocalStorage } from '../core/api';
 import Markdown from '../components/Styled/Markdown';
 
 const PAGE_ID = 'id_afterlecture';
 
 const Page: React.SFC<any> = (props: any) => {
-  const { text } = props;
+  const text = useLocalStorage(PAGE_ID, props.text);
   return (
     <React.Fragment>
       <Markdown content={text} />

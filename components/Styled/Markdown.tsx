@@ -48,8 +48,13 @@ interface Props {
   content: string;
 }
 
-export default ({ content = '### ...' }: Props) => (
-  <Markdown
-    dangerouslySetInnerHTML={{ __html: marked(content, { sanitize: true }) }}
-  />
-);
+export default ({ content = '### ...' }: Props) => {
+  if (!content) {
+    return <div>...</div>;
+  }
+  return (
+    <Markdown
+      dangerouslySetInnerHTML={{ __html: marked(content, { sanitize: true }) }}
+    />
+  );
+};

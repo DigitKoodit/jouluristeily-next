@@ -18,6 +18,9 @@ const Container = styled.div`
   transition: all 0.1s ease-in-out;
   animation: fade-in-top ease 0.5s forwards;
   animation-delay: ${({ prop }: any) => prop}00ms;
+  > * {
+    font-size: 0.8rem;
+  }
   &:last-child {
     border-bottom: none;
   }
@@ -31,7 +34,6 @@ const Container = styled.div`
     h2,
     h3,
     bold {
-      font-size: 0.8rem;
       font-weight: 600;
       padding: 5px 0px;
       font-family: ${fonts.paragraph};
@@ -39,7 +41,6 @@ const Container = styled.div`
     }
     & > p {
       font-family: ${fonts.paragraph};
-      font-size: 0.8rem;
       padding: 5px 0px;
       margin: 0;
     }

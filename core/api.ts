@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { createClient } from 'contentful';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
 
 export function useLocalStorage(key: string, data: any) {
   const [storedData, setData] = React.useState(null);
-  console.log(data);
   React.useEffect(() => {
     const storage = window.localStorage;
     const cached = storage.getItem(key);
@@ -21,8 +23,8 @@ export function useLocalStorage(key: string, data: any) {
 
 export function createApi() {
   const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_TOKEN
+    space: process.env.CONTENTFUL_SPACE_ID || publicRuntimeConfig.space,
+    accessToken: process.env.CONTENTFUL_TOKEN || publicRuntimeConfig.accessToken
   });
   return {
     fetchContentTypes: () => {

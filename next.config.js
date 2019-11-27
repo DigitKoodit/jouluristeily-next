@@ -14,21 +14,10 @@ module.exports = withTypescript(
       config.plugins.push(new webpack.DefinePlugin(env));
       return config;
     },
-    workBoxOpts: {
-      generateInDevMode: true,
-      devSwSrc: 'test',
-      runtimeCaching: [
-        {
-          urlPattern: /^https?.*/,
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'offlineCache',
-            expiration: {
-              maxEntries: 200
-            }
-          }
-        }
-      ]
+    publicRuntimeConfig: {
+      token: process.env.CONTENTFUL_TOKEN,
+      space: process.env.CONTENTFUL_SPACE_ID,
+      gaid: process.env.GA_ID
     }
   })
 );

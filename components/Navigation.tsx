@@ -107,11 +107,14 @@ const MenuHolder = styled.div`
 const Logo = styled(Image)`
   margin-top: 10px;
   margin-bottom: -20px;
+  width: 100%;
+  padding: 0rem 2rem;
 `;
 
 const Icon = styled(Image)`
-  width: 100px;
+  width: 10px;
   margin: 20px;
+  width: 100px;
 `;
 
 interface Props {

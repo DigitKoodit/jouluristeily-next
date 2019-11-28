@@ -52,9 +52,7 @@ export const Html = styled.html`
   }
 `;
 
-export const Image = styled.img`
-  width: 250px;
-`;
+export const Image = styled.img``;
 
 export const Body = styled.body`
   box-sizing: border-box;

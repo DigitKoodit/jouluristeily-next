@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import { colors, shadows } from '../../styles/stylesheet';
 
 const Line = styled.span`
-  height: 5px;
+  height: 6px;
   width: 100%;
   margin-bottom: 6px;
-  background-color ${colors.yellow};
-  border-radius: 2px;
-  box-shadow: ${shadows.low};
+  background-color ${colors.red};
+  box-shadow: ${shadows.tall};
   transition: all .1s ease-in-out;
 `;
 
@@ -20,7 +19,7 @@ const Box = styled.div`
   justify-content: flex-start;
   padding: 4px 4px;
   &:hover > * {
-    background-color: ${colors.red};
+    background-color: ${colors.black};
   }
 `;
 

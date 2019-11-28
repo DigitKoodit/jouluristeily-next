@@ -6,8 +6,9 @@ const Table = styled.table`
   font-family: ${fonts.paragraph};
   width: 100%;
 
-  & tr {
-    border-top: #444444 solid 1px;
+  & tbody > tr:nth-child(2n + 1) {
+    background: #f3f3f3;
+    border-radius: 2px;
   }
 
   & td {

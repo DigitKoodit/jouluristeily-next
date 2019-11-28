@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../styles/stylesheet';
+import { colors, shadows } from '../../styles/stylesheet';
 
 const Line = styled.span`
   position: absolute;
@@ -7,13 +7,13 @@ const Line = styled.span`
   left: 0;
   right: 0;
   top: 17px;
-  height: 5px;
+  height: 6px;
   width: 100%;
   margin-bottom: 6px;
-  background-color ${colors.yellow};
-  border-radius: 2px;
+  background-color ${colors.red};
   transition: all .1s ease-in-out;
   transform: rotate(135deg);
+  box-shadow: ${shadows.low};
   &:first-child{
     transform: rotate(45deg);
   }
@@ -36,7 +36,7 @@ const Box = styled.div`
   padding: 4px 4px;
   &:hover {
     & > * {
-      background-color: ${colors.red};
+      background-color: ${colors.black};
     }
   }
 `;

@@ -36,11 +36,11 @@ const NoteForm = styled.form`
 `;
 
 const TextField = styled.input`
-  padding: 10px 10px;
+  padding: 1rem;
   position: relative;
-  margin-right: 5px;
+  margin-right: 1rem;
   border-radius: 4px;
-  background: rgba(255, 229, 120, 0.5);
+  background: #f3f3f3;
   outline: none;
   box-shadow: none;
   border: none;
@@ -84,6 +84,8 @@ const Note = styled.div`
   padding: 10px 0px;
   border-radius: 4px;
   background: rgba(255, 229, 120, 0.2);
+  background: ${colors.lightyellow};
+
   overflow: hidden;
 
   & > p {
@@ -183,8 +185,13 @@ class Notepad extends React.Component<any, State> {
     return (
       <Container>
         <Title>Hyttimuistio</Title>
+        <p>
+          Hyttimuistioon voit tallentaa näppärästi omasi ja kaverisi hytit
+          talteen yön exkursioita ajatellen.
+        </p>
         <NoteForm>
           <TextField
+            autoFocus
             value={this.state.current}
             onChange={ev => this.onChange(ev)}
           />

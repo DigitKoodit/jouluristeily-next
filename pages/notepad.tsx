@@ -22,7 +22,7 @@ interface State {
   current: string;
 }
 
-const NoteForm = styled.form`
+export const NoteForm = styled.form`
   ${fadeInLeft}
   opacity: 0;
   animation: fade-in-left .5s ease forwards;
@@ -35,7 +35,7 @@ const NoteForm = styled.form`
   box-size: border-box;
 `;
 
-const TextField = styled.input`
+export const TextField = styled.input`
   padding: 1rem;
   position: relative;
   margin-right: 1rem;

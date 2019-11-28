@@ -30,10 +30,10 @@ export interface NaviItem {
 const naviTree: NaviItem[] = [
   { href: '/index', label: `JR ${format(new Date(), 'YYYY')}` },
   { href: '/events', label: 'Ohjelma' },
+  { href: '/rissenimi', label: 'Risteilynimi' },
   { href: '/notepad', label: 'Hyttimuistio', divider: colors.lightred },
   { href: '/tuplis', label: 'Tuplis' },
   { href: '/prices', label: 'Hinnasto' },
-  // { href: '/namegenerator', label: 'Risteilynimeni'},
   { href: '/guide', label: 'Ohjeet' },
   { href: '/ehdot', label: 'Matkaehdot', divider: colors.lightred },
   { href: '/loimu', label: 'Loimu' },
